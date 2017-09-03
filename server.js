@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000; //stores all environment variables as key value pairs, if one can't be found we set to 3000.
 
 var app = express();
 
@@ -58,4 +59,6 @@ app.get('/bad', (req, res) => {
    })
 });
 
-app.listen(3000, ()=>{console.log('Server is up on port 3000')}); //port listening on 3000, listens until told to stop
+
+//set up to deploy to heroku
+app.listen(port, ()=>{console.log(`Server is up on port ${port}`)}); //port listening on 3000, listens until told to stop
