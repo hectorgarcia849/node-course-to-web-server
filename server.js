@@ -23,9 +23,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req,res,next) => {
-    res.render('maintenance.hbs'); //if don't call next, the handlers app.get will not get executed below
-});
+// app.use((req,res,next) => {
+//     res.render('maintenance.hbs');//if don't call next, the handlers app.get will not get executed below
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -59,6 +59,11 @@ app.get('/bad', (req, res) => {
    })
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page'
+    });
+});
 
 //set up to deploy to heroku
 app.listen(port, ()=>{console.log(`Server is up on port ${port}`)}); //port listening on 3000, listens until told to stop
